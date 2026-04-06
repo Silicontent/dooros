@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://b7t4t87nxscro"]
+
+[ext_resource type="Script" uid="uid://cklu53pgwhh37" path="res://scripts/login/login.gd" id="1_47vyr"]
+[ext_resource type="Texture2D" uid="uid://bwswugt81drya" path="res://assets/users/admin.png" id="1_nw41r"]
+[ext_resource type="FontFile" uid="uid://cipoj8oxnuwhy" path="res://assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf" id="1_pymad"]
+[ext_resource type="PackedScene" uid="uid://oabh26h314ke" path="res://scenes/fade_transition.tscn" id="3_0emk2"]
+[ext_resource type="Texture2D" uid="uid://b2l1qpx86ctoh" path="res://assets/boot/loading_spinner/spinner_1.png" id="3_cs5o2"]
+[ext_resource type="Texture2D" uid="uid://cebco766mbgqp" path="res://assets/boot/loading_spinner/spinner_2.png" id="4_31byv"]
+[ext_resource type="Texture2D" uid="uid://cjqe42758orju" path="res://assets/boot/loading_spinner/spinner_3.png" id="5_1u3ka"]
+[ext_resource type="Texture2D" uid="uid://dsawmwmb3keey" path="res://assets/boot/loading_spinner/spinner_4.png" id="6_wlyqo"]
+[ext_resource type="Texture2D" uid="uid://dsfjb0yofh83x" path="res://assets/boot/loading_spinner/spinner_5.png" id="7_tbijj"]
+[ext_resource type="Texture2D" uid="uid://bw1sjyq0xg7xw" path="res://assets/boot/loading_spinner/spinner_6.png" id="8_tbijj"]
+[ext_resource type="Texture2D" uid="uid://byojwyss0kvkf" path="res://assets/boot/loading_spinner/spinner_7.png" id="9_47vyr"]
+[ext_resource type="Texture2D" uid="uid://c7mc8uixa8y3p" path="res://assets/boot/loading_spinner/spinner_8.png" id="10_ngwtj"]
+[ext_resource type="FontFile" uid="uid://cb541tdnjuatc" path="res://assets/fonts/Roboto_Mono/RobotoMono-Italic.ttf" id="12_ngwtj"]
+
+[sub_resource type="Gradient" id="Gradient_ryv3l"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.5049505, 1)
+colors = PackedColorArray(0, 0, 0.53333336, 1, 0, 0, 0.4117647, 1, 0, 0, 0.34509805, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryv3l"]
+noise_type = 0
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pymad"]
+noise = SubResource("FastNoiseLite_ryv3l")
+color_ramp = SubResource("Gradient_ryv3l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw41r"]
+font = ExtResource("1_pymad")
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.44705883)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_47vyr"]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("3_cs5o2")
+frame_1/texture = ExtResource("4_31byv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_1u3ka")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_wlyqo")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("7_tbijj")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("8_tbijj")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("9_47vyr")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("10_ngwtj")
+frame_7/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_47vyr"]
+font = ExtResource("12_ngwtj")
+font_size = 20
+shadow_color = Color(0, 0, 0, 0.44705883)
+
+[sub_resource type="Animation" id="Animation_ngwtj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserContainer/PasswordEnter:editable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UserContainer/PasswordEnter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(666, 740)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UserContainer/PasswordEnter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UserContainer/Loading:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UserContainer/PasswordEnter:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UserContainer/PasswordEnter:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UserContainer/HintLabel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8mo1x"]
+resource_name = "login_failure"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserContainer/PasswordEnter:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UserContainer/PasswordEnter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(666, 740), Vector2(626, 740), Vector2(696, 740), Vector2(626, 740), Vector2(696, 740), Vector2(626, 740), Vector2(696, 740), Vector2(666, 740)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UserContainer/PasswordEnter:editable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UserContainer/HintLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_47vyr"]
+resource_name = "login_success"
+length = 2.25
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserContainer/PasswordEnter:editable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UserContainer/PasswordEnter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(666, 740), Vector2(666, 775)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UserContainer/PasswordEnter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UserContainer/Loading:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(0.36602157, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UserContainer/PasswordEnter:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UserContainer/HintLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ngwtj"]
+_data = {
+&"RESET": SubResource("Animation_ngwtj"),
+&"login_failure": SubResource("Animation_8mo1x"),
+&"login_success": SubResource("Animation_47vyr")
+}
+
+[node name="Login" type="Control" unique_id=877586465]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47vyr")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1567747316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_pymad")
+
+[node name="UserContainer" type="Control" parent="." unique_id=1803976528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileIcon" type="TextureRect" parent="UserContainer" unique_id=1638355659]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 294.0
+offset_right = 1254.0
+offset_bottom = 613.0
+texture = ExtResource("1_nw41r")
+stretch_mode = 3
+
+[node name="Username" type="Label" parent="UserContainer" unique_id=326333866]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 620.0
+offset_right = 1254.0
+offset_bottom = 685.0
+text = "Administrator"
+label_settings = SubResource("LabelSettings_nw41r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PasswordEnter" type="LineEdit" parent="UserContainer" unique_id=820324117]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 740.0
+offset_right = 1253.9995
+offset_bottom = 786.0
+theme_override_fonts/font = ExtResource("1_pymad")
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Enter password..."
+secret = true
+
+[node name="Loading" type="TextureRect" parent="UserContainer" unique_id=1000922626]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = 190.5
+offset_right = 37.5
+offset_bottom = 265.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_47vyr")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HintLabel" type="Label" parent="UserContainer" unique_id=1647025987]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = 254.5
+offset_right = 318.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "*"
+label_settings = SubResource("LabelSettings_47vyr")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FadeTransition" parent="." unique_id=691797635 instance=ExtResource("3_0emk2")]
+visible = false
+layout_mode = 1
+fade_speed = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1256241405]
+libraries/ = SubResource("AnimationLibrary_ngwtj")
+
+[connection signal="text_submitted" from="UserContainer/PasswordEnter" to="." method="_on_password_submitted"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_finished"]

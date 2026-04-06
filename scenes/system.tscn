@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dree4qix7c23p"]
+
+[ext_resource type="Script" uid="uid://b32sx7j0dsfs2" path="res://scripts/globals/system.gd" id="1_e82qx"]
+[ext_resource type="Script" uid="uid://bs3w8j3qxhcls" path="res://scripts/globals/user_manager.gd" id="2_uf85h"]
+
+[node name="System" type="Node" unique_id=1420050577]
+script = ExtResource("1_e82qx")
+
+[node name="UserManager" type="Node" parent="." unique_id=94114054]
+script = ExtResource("2_uf85h")
