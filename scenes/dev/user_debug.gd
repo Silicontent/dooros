@@ -7,7 +7,7 @@ var u: User = null
 
 
 func _ready() -> void:
-	title = "DoorOS %s - User Debug" % [System.OS_VER]
+	title = "DoorOS %s - User Debug Menu" % [System.OS_VER]
 
 
 func _on_create_button_pressed() -> void:
