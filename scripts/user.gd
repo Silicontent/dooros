@@ -12,3 +12,6 @@ var display_name: String
 ## Determines if the user has admin privileges, which gives the user access
 ## to everything on the system, including system files
 var admin: bool
+
+## The SHA256 hash of the user's password.
+var password: String

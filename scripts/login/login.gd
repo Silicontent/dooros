@@ -13,6 +13,13 @@ func _ready() -> void:
 	hint_lbl.text = "Hint: " + password_hint
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debug_start") and not UserDebug.active:
+		UserDebug.active = true
+		var w := preload("res://scenes/dev/user_debug.tscn").instantiate()
+		add_child(w)
+
+
 func _on_password_submitted(new_text: String) -> void:
 	# check given password hash against stored hash
 	if new_text.sha256_text() == password:

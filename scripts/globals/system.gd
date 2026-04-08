@@ -2,12 +2,12 @@ extends Node
 
 ## The current internal version of DoorOS. This value is updated whenever
 ## a new DoorOS patch is pushed.
-const OS_VER := "0.0.1.dev"
+const OS_VER := "0.0.2"
 
 ## Controls all logic related to creating, loading, and managing user
 ## information. The users directory is used to save user information on
 ## the disk.
-@onready var user_manager := $UserManager
+@onready var _sys_user := $UserManager
 
 
 ## Initializes all DoorOS system functionality, including system settings
@@ -18,7 +18,7 @@ const OS_VER := "0.0.1.dev"
 func load_system_info() -> int:
 	var res := 0
 	
-	if user_manager.get_users() == null:
+	if get_user_manager().get_users() == null:
 		res = 1
 	
 	return res
@@ -28,3 +28,26 @@ func load_system_info() -> int:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+
+
+# HELPERS =====================================================================
+func get_user_manager() -> UserManager:
+	return _sys_user
+
+
+# UTILITIES ===================================================================
+## Recursively removes a directory and all of its contents.
+## [br] [br]
+## Removes a directory and everything inside of it, allowing for the deletion
+## of non-empty directories that Godot does not provide.
+## [br] [br]
+## Courtesy of
+## [url=https://github.com/godotengine/godot-proposals/issues/11598#issuecomment-2599415910]sockeye-d[/url]
+## on GitHub.
+func remove_dir_recursive(directory: String) -> Error:
+	for dir_name in DirAccess.get_directories_at(directory):
+		remove_dir_recursive(directory.path_join(dir_name))
+	for file_name in DirAccess.get_files_at(directory):
+		DirAccess.remove_absolute(directory.path_join(file_name))
+	
+	return DirAccess.remove_absolute(directory)
