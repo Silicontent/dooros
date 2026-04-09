@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://blx1jivg5doj"]
 
+[ext_resource type="Theme" uid="uid://bwks42f0ah1vk" path="res://assets/window/window_theme.tres" id="1_iylkq"]
 [ext_resource type="Script" uid="uid://bgq45jqynstsy" path="res://scenes/dev/user_debug.gd" id="1_ukuul"]
 [ext_resource type="FontFile" uid="uid://cjvhljs3vcp3r" path="res://assets/fonts/IBM VGA 8x16/Px437_IBM_VGA_8x16.ttf" id="1_xh65f"]
 
@@ -11,9 +12,9 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="UserDebug" type="Window" unique_id=276788957]
 oversampling_override = 1.0
-title = "Loading..."
-position = Vector2i(0, 36)
+initial_position = 1
 size = Vector2i(500, 500)
+theme = ExtResource("1_iylkq")
 script = ExtResource("1_ukuul")
 
 [node name="Window" type="Control" parent="." unique_id=654409147]

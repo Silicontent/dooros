@@ -69,7 +69,7 @@ func create_user(username: String, display_name: String, admin: bool = false, pa
 	# path to the user's personal directory (comparable to the Linux ~ folder)
 	var user_path := USERS_DIR + "/" + username + "/"
 	
-	if username:
+	if username == null or username == "":
 		# username must not be null or empty, so cancel user creation
 		res = -2
 	elif (DirAccess.dir_exists_absolute(user_path)):
