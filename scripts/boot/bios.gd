@@ -13,6 +13,12 @@ func _ready() -> void:
 	anim.play("bios_boot")
 
 
+func _process(_delta: float) -> void:
+	# allow the BIOS animation to be skipped
+	if Input.is_action_just_pressed("debug_start"):
+		get_tree().change_scene_to_file("res://scenes/boot/startup.tscn")
+
+
 func _on_anim_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file("res://scenes/boot/startup.tscn")
 
@@ -26,14 +32,14 @@ func show_info() -> void:
 	if OS.get_name() == "Web":
 		bios_display.append_text("\n\nCPU..........................Intel Pentium III 32-bit\n"
 		+ "Cores........................1 logical core\n"
-		+ "Total Memory.................134217728\n"
+		+ "Total Memory.................134217728 bytes\n"
 		+ "Graphics Card................nVidia RIVA TNT2 Ultra\n"
 		+ "Boot Mode....................BIOS\n\n"
 		+ "Trying boot device #1........")
 	else:
 		bios_display.append_text("\n\nCPU.........................." + OS.get_processor_name() + "\n"
 		+ "Cores........................" + str(OS.get_processor_count()) + " logical core(s)\n"
-		+ "Total Memory................." + str(OS.get_memory_info()["physical"]) + "\n"
+		+ "Total Memory................." + str(OS.get_memory_info()["physical"]) + " bytes\n"
 		+ "Graphics Card................" + str(RenderingServer.get_video_adapter_name()) + "\n"
 		+ "Boot Mode....................BIOS\n\n"
 		+ "Trying boot device #1........")

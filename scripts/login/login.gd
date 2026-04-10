@@ -5,7 +5,7 @@ extends Control
 
 # SHA256 of the administrator password (hint: classic version password)
 var password := "0bf52e390157da19c0c76f99c7c83179ba51e8c3e45b15a6387efb5ac0106a14"
-var password_hint := "classic version's password"
+var password_hint := "classic version's password (pbct)"
 
 
 func _ready() -> void:
@@ -30,4 +30,5 @@ func _on_password_submitted(new_text: String) -> void:
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	if anim_name == "login_success":
-		get_tree().change_scene_to_file("res://scenes/demo_end.tscn")
+		# log the user into the desktop
+		get_tree().change_scene_to_file("res://scenes/desktop/desktop.tscn")

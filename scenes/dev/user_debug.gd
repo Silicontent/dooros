@@ -48,3 +48,11 @@ func _on_delete_button_pressed() -> void:
 		%ResultDisplay.text = "User deletion request: %d" % [res]
 	else:
 		%ResultDisplay.text = "User deletion request: fetch a user first"
+
+
+func _on_open_button_pressed() -> void:
+	match OS.get_name():
+		"Web":
+			%ResultDisplay.text = "Open request: Inaccessible on web VM"
+		_:
+			OS.shell_open(ProjectSettings.globalize_path("user://users"))

@@ -13,7 +13,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="UserDebug" type="Window" unique_id=276788957]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(500, 500)
+size = Vector2i(500, 550)
 theme = ExtResource("1_iylkq")
 script = ExtResource("1_ukuul")
 
@@ -86,6 +86,11 @@ placeholder_text = "password"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_fonts/font = ExtResource("1_xh65f")
 theme_override_font_sizes/font_size = 16
 text = "Admin"
@@ -150,6 +155,15 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xh65f")
 text = "Delete Fetched User"
 
+[node name="HSeparator5" type="HSeparator" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=42147662]
+layout_mode = 2
+theme_override_constants/separation = 38
+
+[node name="OpenButton" type="Button" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=1219848656]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xh65f")
+text = "Open /users/"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Window/MarginContainer/ContainerAll" unique_id=2092678385]
 layout_mode = 2
 size_flags_vertical = 3
@@ -164,7 +178,7 @@ horizontal_alignment = 1
 [node name="ResultDisplay" type="Label" parent="Window/MarginContainer/ContainerAll/VBoxContainer2" unique_id=460638910]
 unique_name_in_owner = true
 layout_mode = 2
-text = "#"
+text = "Any errors will appear here."
 label_settings = SubResource("LabelSettings_xh65f")
 horizontal_alignment = 1
 
@@ -173,3 +187,4 @@ horizontal_alignment = 1
 [connection signal="text_submitted" from="Window/MarginContainer/ContainerAll/VBoxContainer/Username2" to="." method="_on_username_2_text_submitted"]
 [connection signal="text_submitted" from="Window/MarginContainer/ContainerAll/VBoxContainer/Password2" to="." method="_on_password_2_text_submitted"]
 [connection signal="pressed" from="Window/MarginContainer/ContainerAll/VBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Window/MarginContainer/ContainerAll/VBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]

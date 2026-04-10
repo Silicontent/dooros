@@ -2,7 +2,7 @@ extends Node
 
 ## The current internal version of DoorOS. This value is updated whenever
 ## a new DoorOS patch is pushed.
-const OS_VER := "0.0.2"
+const OS_VER := "0.0.2.1"
 
 ## Controls all logic related to creating, loading, and managing user
 ## information. The users directory is used to save user information on
@@ -22,12 +22,6 @@ func load_system_info() -> int:
 		res = 1
 	
 	return res
-
-
-# DEBUG
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
 
 
 # HELPERS =====================================================================
