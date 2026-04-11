@@ -13,5 +13,7 @@ var display_name: String
 ## to everything on the system, including system files
 var admin: bool
 
-## The SHA256 hash of the user's password.
+## The SHA256 hash of the user's password. If the user has no password, this will be [code]null[/code].
 var password: String
+## An optional hint for the user's password
+var hint: String

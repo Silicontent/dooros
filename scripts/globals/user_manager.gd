@@ -40,8 +40,8 @@ func get_users() -> Array[User]:
 	if not DirAccess.dir_exists_absolute(USERS_DIR):
 		# create the users directory
 		DirAccess.make_dir_absolute(USERS_DIR)
-		# create the default administrator user
-		create_user("admin", "Administrator", true, "pbct")
+		# create the default user
+		create_user("default", "Default User", false)
 	
 	# load all users
 	for path in DirAccess.get_directories_at(USERS_DIR):
@@ -60,10 +60,11 @@ func get_users() -> Array[User]:
 ## [br] [br]
 ## Various error codes are returned depending on the result of user creation.
 ## [br]0: User creation successful.
+## [br]-3: Password not provided when creating an admin user.
 ## [br]-2: Username was not provided or was empty.
 ## [br]-1: User already exists.
 ## [br]1+: Other error codes are from [enum Error]
-func create_user(username: String, display_name: String, admin: bool = false, password: String = "") -> int:
+func create_user(username: String, display_name: String, admin: bool = false, password: String = "", hint: String = "") -> int:
 	# the resulting error code
 	var res := 0
 	# path to the user's personal directory (comparable to the Linux ~ folder)
@@ -75,6 +76,9 @@ func create_user(username: String, display_name: String, admin: bool = false, pa
 	elif (DirAccess.dir_exists_absolute(user_path)):
 		# user already exists, so cancel user creation
 		res = -1
+	elif password == "" and admin:
+		# admin users must have a password, so cancel
+		res = -3
 	else:
 		# create the user's directory
 		DirAccess.make_dir_absolute(user_path)
@@ -86,9 +90,18 @@ func create_user(username: String, display_name: String, admin: bool = false, pa
 		basic_info.store_var(admin)
 		basic_info.close()
 		
-		# store password in its own file
+		# store password and the password hint in its own file
 		var pw_file := FileAccess.open(user_path + PW_FILE, FileAccess.WRITE)
-		pw_file.store_var(password.sha256_text())
+		
+		# what will be written to the password file
+		var to_file := "null"
+		if password != "":
+			# only write null to the file if no password is provided
+			# this allows non-admin users to not have a password
+			to_file = password.sha256_text()
+		pw_file.store_var(to_file)
+		
+		pw_file.store_var(hint)
 		pw_file.close()
 	
 	return res
@@ -118,6 +131,7 @@ func load_user(username: String) -> User:
 		
 		var pw := FileAccess.open(user_path + PW_FILE, FileAccess.READ)
 		u.password = pw.get_var()
+		u.hint = pw.get_var()
 		pw.close()
 	
 	return u

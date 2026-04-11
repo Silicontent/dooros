@@ -11,22 +11,23 @@ func _ready() -> void:
 
 
 func _on_create_button_pressed() -> void:
-	var res := System.get_user_manager().create_user(%Username.text, %DisplayName.text, %Admin.button_pressed, %Password.text)
+	var res := System.get_user_manager().create_user(%Username.text, %DisplayName.text, %Admin.button_pressed, %Password.text, %Hint.text)
 	%ResultDisplay.text = "User creation request: %d" % [res]
 	if res == 0:
 		%Username.text = ""
 		%DisplayName.text = ""
 		%Admin.button_pressed = false
 		%Password.text = ""
+		%Hint.text = ""
 
 
 func _on_username_2_text_submitted(new_text: String) -> void:
 	u = System.get_user_manager().load_user(new_text)
 	%ResultDisplay.text = "User fetch request: %s" % [u]
 	if u:
-		%InfoDisplay.text = "Username: %s\nDisplay Name: %s\nAdmin?  %s" % [u.username, u.display_name, u.admin]
+		%InfoDisplay.text = "Username: %s\nDisplay Name: %s\nAdmin?  %s\nPassword?  %s\nHint: %s" % [u.username, u.display_name, u.admin, u.password != "null", u.hint]
 	else:
-		%InfoDisplay.text = "Username: {}\nDisplay Name: {}\nAdmin?  {}"
+		%InfoDisplay.text = "Username: {}\nDisplay Name: {}\nAdmin?  {}\nPassword?  {}\nHint {}"
 
 
 func _on_password_2_text_submitted(new_text: String) -> void:

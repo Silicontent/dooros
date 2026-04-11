@@ -13,7 +13,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="UserDebug" type="Window" unique_id=276788957]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(500, 550)
+size = Vector2i(500, 585)
 theme = ExtResource("1_iylkq")
 script = ExtResource("1_ukuul")
 
@@ -72,7 +72,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xh65f")
 theme_override_font_sizes/font_size = 16
-placeholder_text = "display_name"
+placeholder_text = "display name"
 
 [node name="Password" type="LineEdit" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=98983453]
 unique_name_in_owner = true
@@ -80,7 +80,15 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xh65f")
 theme_override_font_sizes/font_size = 16
-placeholder_text = "password"
+placeholder_text = "password (optional if non-admin)"
+
+[node name="Hint" type="LineEdit" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=1630354928]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xh65f")
+theme_override_font_sizes/font_size = 16
+placeholder_text = "password hint (optional)"
 
 [node name="Admin" type="CheckBox" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=836644862]
 unique_name_in_owner = true
@@ -94,11 +102,6 @@ theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_fonts/font = ExtResource("1_xh65f")
 theme_override_font_sizes/font_size = 16
 text = "Admin"
-
-[node name="HSeparator2" type="HSeparator" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=1571487189]
-layout_mode = 2
-theme_override_constants/separation = 14
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xh65f")
 
 [node name="CreateButton" type="Button" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=469962741]
 layout_mode = 2
@@ -128,7 +131,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Username: {}
 Display Name: {}
-Admin?  {}"
+Admin?  {}
+Hint: {}
+Password?  {}"
 label_settings = SubResource("LabelSettings_xh65f")
 
 [node name="Password2" type="LineEdit" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=322351782]
