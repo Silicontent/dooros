@@ -40,6 +40,8 @@ func get_users() -> Array[User]:
 	if not DirAccess.dir_exists_absolute(USERS_DIR):
 		# create the users directory
 		DirAccess.make_dir_absolute(USERS_DIR)
+	
+	if len(DirAccess.get_directories_at(USERS_DIR)) == 0:
 		# create the default user
 		create_user("default", "Default User", false)
 	

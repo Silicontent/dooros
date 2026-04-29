@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cd3ra65ga6v0p"]
+
+[ext_resource type="Script" uid="uid://olqf7lx80chp" path="res://scripts/desktop/quick_bar.gd" id="1_06q4v"]
+[ext_resource type="Texture2D" uid="uid://1qu1idle20ys" path="res://assets/desktop/system_menu/normal.png" id="1_13veq"]
+[ext_resource type="Texture2D" uid="uid://ch46hxre37wum" path="res://assets/desktop/system_menu/pressed.png" id="2_06q4v"]
+[ext_resource type="Texture2D" uid="uid://bamnu0quj43ab" path="res://assets/logo_glow.png" id="2_rmtxi"]
+[ext_resource type="Texture2D" uid="uid://b27fv1ya4dc55" path="res://assets/desktop/system_menu/hovered.png" id="3_46iw5"]
+[ext_resource type="FontFile" uid="uid://deog4ldxparih" path="res://assets/fonts/Roboto_Mono/RobotoMono-Light.ttf" id="6_hxdtg"]
+
+[sub_resource type="Gradient" id="Gradient_06q4v"]
+colors = PackedColorArray(0, 0, 0.89411765, 1, 0, 0.47843137, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_46iw5"]
+gradient = SubResource("Gradient_06q4v")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="Gradient" id="Gradient_u05ru"]
+colors = PackedColorArray(0, 0, 0, 1, 0.11119685, 0.11119684, 0.11119684, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_75vvj"]
+gradient = SubResource("Gradient_u05ru")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_73eyv"]
+line_spacing = 0.0
+font = ExtResource("6_hxdtg")
+font_size = 18
+
+[node name="Desktop" type="Control" unique_id=1549209717]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wallpaper" type="TextureRect" parent="." unique_id=185741694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_46iw5")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Logo" type="TextureRect" parent="Wallpaper" unique_id=517580894]
+modulate = Color(1, 1, 1, 0.26666668)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -501.0
+offset_top = 34.0
+offset_right = -61.0
+offset_bottom = 679.3334
+grow_horizontal = 0
+texture = ExtResource("2_rmtxi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QuickBar" type="TextureRect" parent="." unique_id=624317051]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_75vvj")
+script = ExtResource("1_06q4v")
+
+[node name="BarContainer" type="MarginContainer" parent="QuickBar" unique_id=2106170589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="BarContentsContainer" type="HBoxContainer" parent="QuickBar/BarContainer" unique_id=1801930131]
+layout_mode = 2
+
+[node name="LeftBar" type="HBoxContainer" parent="QuickBar/BarContainer/BarContentsContainer" unique_id=610150952]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SystemMenu" type="TextureButton" parent="QuickBar/BarContainer/BarContentsContainer/LeftBar" unique_id=1574795527]
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Shut down PC"
+texture_normal = ExtResource("1_13veq")
+texture_pressed = ExtResource("3_46iw5")
+texture_hover = ExtResource("2_06q4v")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightBar" type="HBoxContainer" parent="QuickBar/BarContainer/BarContentsContainer" unique_id=1702783446]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BarClock" type="Label" parent="QuickBar/BarContainer/BarContentsContainer/RightBar" unique_id=2016282013]
+layout_mode = 2
+text = "00:00 AM
+1/1/1970"
+label_settings = SubResource("LabelSettings_73eyv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="QuickBar/BarContainer/BarContentsContainer/LeftBar/SystemMenu" to="QuickBar" method="_on_system_menu_pressed"]

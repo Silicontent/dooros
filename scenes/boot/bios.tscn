@@ -208,7 +208,7 @@ anchor_bottom = 1.0
 offset_top = -32.0
 offset_right = 624.0
 grow_vertical = 0
-text = "Press F2 anytime to access/use debug commands."
+text = "Press F2 anytime to access debug commands."
 label_settings = SubResource("LabelSettings_cui3s")
 vertical_alignment = 2
 

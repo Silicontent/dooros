@@ -20,7 +20,7 @@ config/description="Open the door to the future of computing.
 Beta version, not for redistribution."
 config/version="0.0.1"
 config/tags=PackedStringArray("side_project")
-run/main_scene="uid://d4ejnr4ncqqux"
+run/main_scene="uid://dv0l6luteumqi"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

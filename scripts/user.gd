@@ -6,14 +6,14 @@ extends Resource
 ## persists between loads. 
 
 ## The unique username for the user. Used to identify the user.
-var username: String
+@export var username: String
 ## The display name of the user shown on the log-in screen, among other places.
-var display_name: String
+@export var display_name: String
 ## Determines if the user has admin privileges, which gives the user access
 ## to everything on the system, including system files
-var admin: bool
+@export var admin: bool
 
 ## The SHA256 hash of the user's password. If the user has no password, this will be [code]null[/code].
-var password: String
+@export var password: String
 ## An optional hint for the user's password
-var hint: String
+@export var hint: String

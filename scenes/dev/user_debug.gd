@@ -5,6 +5,8 @@ static var active := false
 
 var u: User = null
 
+var root: Control
+
 
 func _ready() -> void:
 	title = "DoorOS %s - User Debug Menu" % [System.OS_VER]
@@ -19,6 +21,7 @@ func _on_create_button_pressed() -> void:
 		%Admin.button_pressed = false
 		%Password.text = ""
 		%Hint.text = ""
+		root.reset_list()
 
 
 func _on_username_2_text_submitted(new_text: String) -> void:
@@ -47,6 +50,7 @@ func _on_delete_button_pressed() -> void:
 	if u:
 		var res := System.get_user_manager().delete_user(u.username)
 		%ResultDisplay.text = "User deletion request: %d" % [res]
+		root.reset_list()
 	else:
 		%ResultDisplay.text = "User deletion request: fetch a user first"
 

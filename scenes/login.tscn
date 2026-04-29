@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://b7t4t87nxscro"]
 
 [ext_resource type="Script" uid="uid://cklu53pgwhh37" path="res://scripts/login/login.gd" id="1_47vyr"]
-[ext_resource type="Texture2D" uid="uid://bwswugt81drya" path="res://assets/users/admin.png" id="1_nw41r"]
 [ext_resource type="FontFile" uid="uid://cipoj8oxnuwhy" path="res://assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf" id="1_pymad"]
+[ext_resource type="Script" uid="uid://b6h5hyu4m4l8k" path="res://scripts/user.gd" id="2_ep5o7"]
+[ext_resource type="Theme" uid="uid://b5wj2dagftl17" path="res://assets/boot/login_user_button.tres" id="2_p2j7e"]
 [ext_resource type="PackedScene" uid="uid://oabh26h314ke" path="res://scenes/fade_transition.tscn" id="3_0emk2"]
 [ext_resource type="Texture2D" uid="uid://b2l1qpx86ctoh" path="res://assets/boot/loading_spinner/spinner_1.png" id="3_cs5o2"]
+[ext_resource type="Script" uid="uid://ccg65e5kwjmdv" path="res://scripts/login/password_enter.gd" id="4_8mo1x"]
 [ext_resource type="Texture2D" uid="uid://cebco766mbgqp" path="res://assets/boot/loading_spinner/spinner_2.png" id="4_31byv"]
+[ext_resource type="Texture2D" uid="uid://bgy6ref4t65rt" path="res://assets/users/user.png" id="4_p2j7e"]
 [ext_resource type="Texture2D" uid="uid://cjqe42758orju" path="res://assets/boot/loading_spinner/spinner_3.png" id="5_1u3ka"]
 [ext_resource type="Texture2D" uid="uid://dsawmwmb3keey" path="res://assets/boot/loading_spinner/spinner_4.png" id="6_wlyqo"]
 [ext_resource type="Texture2D" uid="uid://dsfjb0yofh83x" path="res://assets/boot/loading_spinner/spinner_5.png" id="7_tbijj"]
@@ -13,6 +16,15 @@
 [ext_resource type="Texture2D" uid="uid://byojwyss0kvkf" path="res://assets/boot/loading_spinner/spinner_7.png" id="9_47vyr"]
 [ext_resource type="Texture2D" uid="uid://c7mc8uixa8y3p" path="res://assets/boot/loading_spinner/spinner_8.png" id="10_ngwtj"]
 [ext_resource type="FontFile" uid="uid://cb541tdnjuatc" path="res://assets/fonts/Roboto_Mono/RobotoMono-Italic.ttf" id="12_ngwtj"]
+
+[sub_resource type="Resource" id="Resource_g30j5"]
+script = ExtResource("2_ep5o7")
+username = "admin"
+display_name = "Administrator"
+admin = true
+password = "0bf52e390157da19c0c76f99c7c83179ba51e8c3e45b15a6387efb5ac0106a14"
+hint = "classic version's password (pbct)"
+metadata/_custom_type_script = "uid://b6h5hyu4m4l8k"
 
 [sub_resource type="Gradient" id="Gradient_ryv3l"]
 interpolation_mode = 2
@@ -42,6 +54,8 @@ font = ExtResource("1_pymad")
 font_size = 48
 shadow_color = Color(0, 0, 0, 0.44705883)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngwtj"]
+
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_47vyr"]
 frames = 8
 speed_scale = 10.0
@@ -66,229 +80,6 @@ font = ExtResource("12_ngwtj")
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.44705883)
 
-[sub_resource type="Animation" id="Animation_ngwtj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SelectedUserContainer/PasswordEnter:editable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SelectedUserContainer/PasswordEnter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(666, 740)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SelectedUserContainer/PasswordEnter:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SelectedUserContainer/Loading:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SelectedUserContainer/PasswordEnter:text")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SelectedUserContainer/PasswordEnter:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SelectedUserContainer/HintLabel:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_8mo1x"]
-resource_name = "login_failure"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SelectedUserContainer/PasswordEnter:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SelectedUserContainer/PasswordEnter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(666, 740), Vector2(626, 740), Vector2(696, 740), Vector2(626, 740), Vector2(696, 740), Vector2(626, 740), Vector2(696, 740), Vector2(666, 740)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SelectedUserContainer/PasswordEnter:editable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SelectedUserContainer/HintLabel:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_47vyr"]
-resource_name = "login_success"
-length = 2.25
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SelectedUserContainer/PasswordEnter:editable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SelectedUserContainer/PasswordEnter:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector2(666, 740), Vector2(666, 775)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SelectedUserContainer/PasswordEnter:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SelectedUserContainer/Loading:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.5, 2),
-"transitions": PackedFloat32Array(0.36602157, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SelectedUserContainer/PasswordEnter:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SelectedUserContainer/HintLabel:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ngwtj"]
-_data = {
-&"RESET": SubResource("Animation_ngwtj"),
-&"login_failure": SubResource("Animation_8mo1x"),
-&"login_success": SubResource("Animation_47vyr")
-}
-
 [node name="Login" type="Control" unique_id=877586465]
 layout_mode = 3
 anchors_preset = 15
@@ -297,6 +88,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_47vyr")
+selected_user = SubResource("Resource_g30j5")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1567747316]
 layout_mode = 1
@@ -343,14 +135,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TestUserButton" type="Button" parent="MarginContainer/HBoxContainer/UserListPanel/MarginContainer/ScrollContainer/UserListContainer" unique_id=984411105]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pymad")
-theme_override_font_sizes/font_size = 48
-text = "Test User Button"
-icon = ExtResource("1_nw41r")
-expand_icon = true
-
 [node name="SelectedUserPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=843844790]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -363,92 +147,86 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="SelectedUserContainer" type="Control" parent="." unique_id=1803976528]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SelectedUserContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer" unique_id=190668806]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="UserIcon" type="TextureRect" parent="SelectedUserContainer" unique_id=1638355659]
-visible = false
-layout_mode = 0
-offset_left = 666.0
-offset_top = 294.0
-offset_right = 1254.0
-offset_bottom = 613.0
-texture = ExtResource("1_nw41r")
-stretch_mode = 3
+[node name="UserIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=1638355659]
+modulate = Color(0.48570347, 0.48570353, 0.48570347, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_p2j7e")
+stretch_mode = 4
 
-[node name="DisplayName" type="Label" parent="SelectedUserContainer" unique_id=326333866]
+[node name="DisplayName" type="Label" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=326333866]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 666.0
-offset_top = 620.0
-offset_right = 1254.0
-offset_bottom = 685.0
-text = "Administrator"
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "display_name"
 label_settings = SubResource("LabelSettings_nw41r")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="PasswordEnter" type="LineEdit" parent="SelectedUserContainer" unique_id=820324117]
-layout_mode = 0
-offset_left = 666.0
-offset_top = 740.0
-offset_right = 1253.9995
-offset_bottom = 786.0
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=2058923994]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ngwtj")
+
+[node name="PasswordEnter" type="LineEdit" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=820324117]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_pymad")
 theme_override_font_sizes/font_size = 28
 placeholder_text = "Enter password..."
+context_menu_enabled = false
 secret = true
+script = ExtResource("4_8mo1x")
 
-[node name="Loading" type="TextureRect" parent="SelectedUserContainer" unique_id=1000922626]
-modulate = Color(1, 1, 1, 0)
+[node name="Loading" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordEnter" unique_id=1000922626]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = 190.5
-offset_right = 37.5
-offset_bottom = 265.5
-grow_horizontal = 2
+offset_left = -83.786
+offset_top = -37.5
+offset_bottom = 37.5
+grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_47vyr")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="HintLabel" type="Label" parent="SelectedUserContainer" unique_id=1647025987]
+[node name="BottomContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=1998452820]
+layout_mode = 2
+
+[node name="HintLabel" type="Label" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/BottomContainer" unique_id=1647025987]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -318.0
-offset_top = 254.5
-offset_right = 318.0
-offset_bottom = 322.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Hint: default"
 label_settings = SubResource("LabelSettings_47vyr")
-horizontal_alignment = 1
 autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="LoginButton" type="Button" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/BottomContainer" unique_id=252534284]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_p2j7e")
+text = "Log in"
 
 [node name="FadeTransition" parent="." unique_id=691797635 instance=ExtResource("3_0emk2")]
 visible = false
 layout_mode = 1
 fade_speed = 0.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1256241405]
-libraries/ = SubResource("AnimationLibrary_ngwtj")
-
-[connection signal="text_submitted" from="SelectedUserContainer/PasswordEnter" to="." method="_on_password_submitted"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_finished"]
+[connection signal="text_submitted" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordEnter" to="." method="_on_password_submitted"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/BottomContainer/LoginButton" to="." method="_on_login_button_pressed"]
