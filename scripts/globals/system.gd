@@ -9,7 +9,7 @@ const BOOT_PATH := "user://boot"
 
 ## The current internal version of DoorOS. This value is updated whenever
 ## a new DoorOS patch is pushed.
-const OS_VER := "0.0.2.2"
+const OS_VER := "0.0.3"
 
 ## Controls all logic related to creating, loading, and managing user
 ## information. The users directory is used to save user information on

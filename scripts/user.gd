@@ -13,7 +13,8 @@ extends Resource
 ## to everything on the system, including system files
 @export var admin: bool
 
-## The SHA256 hash of the user's password. If the user has no password, this will be [code]null[/code].
+## The SHA256 hash of the user's password. If the user has no password, this
+## will be [member UserManager.NO_PASS].
 @export var password: String
 ## An optional hint for the user's password
 @export var hint: String

@@ -23,6 +23,10 @@ func load_user_information(u: User) -> void:
 	
 	# load display name
 	%DisplayName.text = u.display_name
+	
+	# disable the password textbox if there is no password
+	%PasswordContainer.textbox.visible = u.password != System.get_user_manager().NO_PASS
+	
 	# load password hint
 	%HintLabel.visible_ratio = 0.0
 	if u.hint != "":
@@ -51,25 +55,22 @@ func go_to_desktop() -> void:
 
 
 func check_password(given: String) -> void:
-	# TODO: check given password hash against stored hash
-	if given.sha256_text() == selected_user.password:
+	# check given password hash against stored hash
+	# or, if the user doesn't have a password, grant log-in
+	if given.sha256_text() == selected_user.password or selected_user.password == System.get_user_manager().NO_PASS:
 		%HintLabel.visible_ratio = 0.0
-		%LoginButton.disabled = true
-		await %PasswordEnter.animate_login_success()
-		go_to_desktop()
+		%PasswordContainer.animate_login_success()
 	else:
 		if selected_user.hint != "":
 			%HintLabel.visible_ratio = 1.0
-		%LoginButton.disabled = true
-		await %PasswordEnter.animate_login_failure()
-		%LoginButton.disabled = false
+		await %PasswordContainer.animate_login_failure()
 
 
 func _on_password_submitted(new_text: String) -> void:
 	check_password(new_text)
 
 func _on_login_button_pressed() -> void:
-	check_password(%PasswordEnter.text)
+	check_password(%PasswordContainer.textbox.text)
 
 
 # DEBUG =======================================================================

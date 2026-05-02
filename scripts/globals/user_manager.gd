@@ -10,6 +10,9 @@ const USERS_DIR := "user://users"
 const INFO_FILE := "info"
 const PW_FILE := "pw"
 
+# what is stored as a password for users without one
+const NO_PASS := "null"
+
 ## The user currently logged into the system.
 var _user: User = null
 
@@ -96,7 +99,7 @@ func create_user(username: String, display_name: String, admin: bool = false, pa
 		var pw_file := FileAccess.open(user_path + PW_FILE, FileAccess.WRITE)
 		
 		# what will be written to the password file
-		var to_file := "null"
+		var to_file := NO_PASS
 		if password != "":
 			# only write null to the file if no password is provided
 			# this allows non-admin users to not have a password

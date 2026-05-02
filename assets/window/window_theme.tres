@@ -21,6 +21,25 @@ shadow_color = Color(0, 0, 0, 0.3647059)
 shadow_size = 1
 shadow_offset = Vector2(3, 3)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuueh"]
+bg_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 36.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.3647059)
+shadow_size = 1
+shadow_offset = Vector2(3, 3)
+
 [resource]
 Window/colors/title_color = Color(1, 1, 1, 1)
 Window/constants/close_h_offset = 28
@@ -33,4 +52,4 @@ Window/fonts/title_font = ExtResource("1_wuueh")
 Window/icons/close = null
 Window/icons/close_pressed = null
 Window/styles/embedded_border = SubResource("StyleBoxFlat_iylkq")
-Window/styles/embedded_unfocused_border = null
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_wuueh")

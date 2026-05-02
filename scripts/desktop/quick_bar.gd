@@ -4,12 +4,16 @@ extends TextureRect
 
 
 func _process(_delta: float) -> void:
-	update_clock()
+	if %SecretIDK.playing:
+		clock.text = "2:41 AM\n9/17/2006"
+	else:
+		update_clock()
 
 
 # ACTIONS =====================================================================
 func _on_system_menu_pressed() -> void:
-	System.quit()
+	if not %SecretIDK.playing:
+		System.quit()
 
 
 # ONGOING PROCESSES ===========================================================
