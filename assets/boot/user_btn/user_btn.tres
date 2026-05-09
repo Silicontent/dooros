@@ -1,0 +1,40 @@
+[gd_resource type="Theme" format=3 uid="uid://bsu7t6bn4kb2o"]
+
+[ext_resource type="FontFile" uid="uid://cipoj8oxnuwhy" path="res://assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf" id="1_mml84"]
+[ext_resource type="StyleBox" uid="uid://bjrp66e2r3k5q" path="res://assets/boot/user_btn/regular_btn_style.tres" id="2_oiaw7"]
+[ext_resource type="StyleBox" uid="uid://ch005288qmfrc" path="res://assets/boot/user_btn/hover_btn_style.tres" id="3_l1su3"]
+[ext_resource type="StyleBox" uid="uid://re10yesfnayq" path="res://assets/boot/user_btn/pressed_btn_style.tres" id="4_oeh3o"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.9428228, 0.94282264, 0.94282264, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/line_spacing = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_mml84")
+Button/icons/icon = null
+Button/styles/disabled = ExtResource("2_oiaw7")
+Button/styles/disabled_mirrored = ExtResource("2_oiaw7")
+Button/styles/focus = ExtResource("3_l1su3")
+Button/styles/hover = ExtResource("3_l1su3")
+Button/styles/hover_mirrored = ExtResource("3_l1su3")
+Button/styles/hover_pressed = ExtResource("4_oeh3o")
+Button/styles/hover_pressed_mirrored = ExtResource("4_oeh3o")
+Button/styles/normal = ExtResource("2_oiaw7")
+Button/styles/normal_mirrored = ExtResource("2_oiaw7")
+Button/styles/pressed = ExtResource("4_oeh3o")
+Button/styles/pressed_mirrored = ExtResource("4_oeh3o")

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bo24oihxj2itk"]
+
+[ext_resource type="Theme" uid="uid://bwks42f0ah1vk" path="res://assets/window/window_theme.tres" id="1_o1728"]
+[ext_resource type="FontFile" uid="uid://cjvhljs3vcp3r" path="res://assets/fonts/IBM VGA 8x16/Px437_IBM_VGA_8x16.ttf" id="2_3a8eh"]
+[ext_resource type="Script" uid="uid://c1ll5i76flkx4" path="res://scripts/desktop/terminal.gd" id="2_vmfki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmfki"]
+bg_color = Color(0.13333334, 0.13333334, 0.14901961, 1)
+
+[sub_resource type="Theme" id="Theme_a0jqa"]
+TextEdit/colors/background_color = Color(0, 0, 0, 0)
+TextEdit/colors/caret_background_color = Color(1, 1, 1, 1)
+TextEdit/colors/caret_color = Color(1, 1, 1, 1)
+TextEdit/colors/current_line_color = Color(1, 1, 1, 1)
+TextEdit/colors/font_color = Color(1, 1, 1, 1)
+TextEdit/colors/font_outline_color = Color(0, 0, 0, 0)
+TextEdit/colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+TextEdit/colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
+TextEdit/colors/font_selected_color = Color(0, 0, 0, 0)
+TextEdit/colors/search_result_border_color = Color(0.3, 0.3, 0.3, 0.4)
+TextEdit/colors/search_result_color = Color(0.3, 0.3, 0.3, 1)
+TextEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+TextEdit/colors/word_highlighted_color = Color(0.5, 0.5, 0.5, 0.25)
+TextEdit/constants/caret_width = 1
+TextEdit/constants/line_spacing = 4
+TextEdit/constants/outline_size = 0
+TextEdit/constants/wrap_offset = 10
+TextEdit/font_sizes/font_size = 16
+TextEdit/fonts/font = ExtResource("2_3a8eh")
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = SubResource("StyleBoxFlat_vmfki")
+TextEdit/styles/read_only = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_vmfki"]
+
+[node name="Terminal" type="Window" unique_id=391755869]
+oversampling_override = 1.0
+title = "Terminal"
+position = Vector2i(0, 33)
+size = Vector2i(1000, 600)
+min_size = Vector2i(100, 100)
+accessibility_name = "Terminal"
+accessibility_description = "Access to the command line"
+theme = ExtResource("1_o1728")
+script = ExtResource("2_vmfki")
+
+[node name="TextSection" type="TextEdit" parent="." unique_id=1098689642]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_a0jqa")
+emoji_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+wrap_mode = 1
+caret_type = 1
+caret_blink = true
+caret_move_on_right_click = false
+caret_multiple = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=103609157]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CommandPrompt" type="LineEdit" parent="VBoxContainer" unique_id=1090192267]
+layout_mode = 2
+
+[node name="CommandResult" type="Label" parent="VBoxContainer" unique_id=1267642397]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_vmfki")
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="caret_changed" from="TextSection" to="." method="_on_text_caret_changed"]
+[connection signal="text_changed" from="TextSection" to="." method="_on_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/CommandPrompt" to="." method="_on_command_submitted"]

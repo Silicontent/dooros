@@ -1,25 +1,24 @@
 [gd_scene format=3 uid="uid://b7t4t87nxscro"]
 
-[ext_resource type="Script" uid="uid://cklu53pgwhh37" path="res://scripts/login/login.gd" id="1_47vyr"]
-[ext_resource type="FontFile" uid="uid://cipoj8oxnuwhy" path="res://assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf" id="1_pymad"]
-[ext_resource type="Script" uid="uid://b6h5hyu4m4l8k" path="res://scripts/user.gd" id="2_ep5o7"]
-[ext_resource type="Theme" uid="uid://b5wj2dagftl17" path="res://assets/boot/login_user_button.tres" id="2_p2j7e"]
-[ext_resource type="PackedScene" uid="uid://oabh26h314ke" path="res://scenes/fade_transition.tscn" id="3_0emk2"]
-[ext_resource type="Texture2D" uid="uid://b2l1qpx86ctoh" path="res://assets/boot/loading_spinner/spinner_1.png" id="3_cs5o2"]
-[ext_resource type="Script" uid="uid://ccg65e5kwjmdv" path="res://scripts/login/password_enter.gd" id="4_8mo1x"]
-[ext_resource type="Texture2D" uid="uid://cebco766mbgqp" path="res://assets/boot/loading_spinner/spinner_2.png" id="4_31byv"]
-[ext_resource type="Texture2D" uid="uid://bgy6ref4t65rt" path="res://assets/users/user.png" id="4_p2j7e"]
-[ext_resource type="Texture2D" uid="uid://cjqe42758orju" path="res://assets/boot/loading_spinner/spinner_3.png" id="5_1u3ka"]
-[ext_resource type="Texture2D" uid="uid://dsawmwmb3keey" path="res://assets/boot/loading_spinner/spinner_4.png" id="6_wlyqo"]
-[ext_resource type="Texture2D" uid="uid://dsfjb0yofh83x" path="res://assets/boot/loading_spinner/spinner_5.png" id="7_tbijj"]
-[ext_resource type="Texture2D" uid="uid://bw1sjyq0xg7xw" path="res://assets/boot/loading_spinner/spinner_6.png" id="8_tbijj"]
-[ext_resource type="Texture2D" uid="uid://byojwyss0kvkf" path="res://assets/boot/loading_spinner/spinner_7.png" id="9_47vyr"]
-[ext_resource type="Texture2D" uid="uid://c7mc8uixa8y3p" path="res://assets/boot/loading_spinner/spinner_8.png" id="10_ngwtj"]
-[ext_resource type="FontFile" uid="uid://cb541tdnjuatc" path="res://assets/fonts/Roboto_Mono/RobotoMono-Italic.ttf" id="12_ngwtj"]
-[ext_resource type="Script" uid="uid://bfimygfeqpogr" path="res://scripts/login/login_load.gd" id="13_g30j5"]
+[ext_resource type="Script" uid="uid://cklu53pgwhh37" path="res://scripts/login/login.gd" id="1_0ex61"]
+[ext_resource type="Script" uid="uid://b6h5hyu4m4l8k" path="res://scripts/user.gd" id="2_2vof6"]
+[ext_resource type="Texture2D" uid="uid://bgy6ref4t65rt" path="res://assets/users/user.png" id="3_516m8"]
+[ext_resource type="FontFile" uid="uid://cipoj8oxnuwhy" path="res://assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf" id="4_t0t4f"]
+[ext_resource type="Script" uid="uid://ccg65e5kwjmdv" path="res://scripts/login/password_enter.gd" id="5_nifli"]
+[ext_resource type="Theme" uid="uid://b5wj2dagftl17" path="res://assets/boot/login_btn.tres" id="6_ude2g"]
+[ext_resource type="Texture2D" uid="uid://b2l1qpx86ctoh" path="res://assets/boot/loading_spinner/spinner_1.png" id="7_6ch6d"]
+[ext_resource type="Texture2D" uid="uid://cebco766mbgqp" path="res://assets/boot/loading_spinner/spinner_2.png" id="8_omw20"]
+[ext_resource type="Texture2D" uid="uid://cjqe42758orju" path="res://assets/boot/loading_spinner/spinner_3.png" id="9_2bj1e"]
+[ext_resource type="Texture2D" uid="uid://dsawmwmb3keey" path="res://assets/boot/loading_spinner/spinner_4.png" id="10_fh3dq"]
+[ext_resource type="Texture2D" uid="uid://dsfjb0yofh83x" path="res://assets/boot/loading_spinner/spinner_5.png" id="11_hiua7"]
+[ext_resource type="Texture2D" uid="uid://bw1sjyq0xg7xw" path="res://assets/boot/loading_spinner/spinner_6.png" id="12_c06ds"]
+[ext_resource type="Texture2D" uid="uid://byojwyss0kvkf" path="res://assets/boot/loading_spinner/spinner_7.png" id="13_bie80"]
+[ext_resource type="Texture2D" uid="uid://c7mc8uixa8y3p" path="res://assets/boot/loading_spinner/spinner_8.png" id="14_f2pyc"]
+[ext_resource type="FontFile" uid="uid://cb541tdnjuatc" path="res://assets/fonts/Roboto_Mono/RobotoMono-Italic.ttf" id="15_wf5cj"]
+[ext_resource type="PackedScene" uid="uid://oabh26h314ke" path="res://scenes/fade_transition.tscn" id="16_1w135"]
 
 [sub_resource type="Resource" id="Resource_g30j5"]
-script = ExtResource("2_ep5o7")
+script = ExtResource("2_2vof6")
 username = "admin"
 display_name = "Administrator"
 admin = true
@@ -50,34 +49,38 @@ bg_color = Color(0, 0, 0, 0.4745098)
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngwtj"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_nw41r"]
-font = ExtResource("1_pymad")
+font = ExtResource("4_t0t4f")
 font_size = 48
 shadow_color = Color(0, 0, 0, 0.44705883)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngwtj"]
+[sub_resource type="LabelSettings" id="LabelSettings_ep5o7"]
+font = ExtResource("4_t0t4f")
+font_size = 19
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_47vyr"]
 frames = 8
 speed_scale = 10.0
-frame_0/texture = ExtResource("3_cs5o2")
-frame_1/texture = ExtResource("4_31byv")
+frame_0/texture = ExtResource("7_6ch6d")
+frame_1/texture = ExtResource("8_omw20")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_1u3ka")
+frame_2/texture = ExtResource("9_2bj1e")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_wlyqo")
+frame_3/texture = ExtResource("10_fh3dq")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("7_tbijj")
+frame_4/texture = ExtResource("11_hiua7")
 frame_4/duration = 1.0
-frame_5/texture = ExtResource("8_tbijj")
+frame_5/texture = ExtResource("12_c06ds")
 frame_5/duration = 1.0
-frame_6/texture = ExtResource("9_47vyr")
+frame_6/texture = ExtResource("13_bie80")
 frame_6/duration = 1.0
-frame_7/texture = ExtResource("10_ngwtj")
+frame_7/texture = ExtResource("14_f2pyc")
 frame_7/duration = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_47vyr"]
-font = ExtResource("12_ngwtj")
+font = ExtResource("15_wf5cj")
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.44705883)
 
@@ -88,9 +91,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_47vyr")
+script = ExtResource("1_0ex61")
 selected_user = SubResource("Resource_g30j5")
-metadata/_edit_vertical_guides_ = [1790.0]
 
 [node name="Background" type="TextureRect" parent="." unique_id=1567747316]
 layout_mode = 1
@@ -133,6 +135,7 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 
 [node name="UserListContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UserListPanel/MarginContainer/ScrollContainer" unique_id=17011657]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -150,16 +153,21 @@ theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
 [node name="SelectedUserContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer" unique_id=190668806]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 12
 alignment = 1
 
 [node name="UserIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=1638355659]
 modulate = Color(0.48570347, 0.48570353, 0.48570347, 1)
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("4_p2j7e")
+texture = ExtResource("3_516m8")
 stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=872657822]
+layout_mode = 2
+theme_override_constants/separation = 17
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ngwtj")
 
 [node name="DisplayName" type="Label" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=326333866]
 unique_name_in_owner = true
@@ -171,32 +179,39 @@ horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=2058923994]
+[node name="UsernameLabel" type="Label" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=722727668]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_constants/separation = 32
+text = "username   (Admin)"
+label_settings = SubResource("LabelSettings_ep5o7")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=2058923994]
+layout_mode = 2
+theme_override_constants/separation = 44
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ngwtj")
 
 [node name="PasswordContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=1998452820]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
-script = ExtResource("4_8mo1x")
+script = ExtResource("5_nifli")
 
 [node name="PasswordEnter" type="LineEdit" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer" unique_id=820324117]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_pymad")
+theme_override_fonts/font = ExtResource("4_t0t4f")
 theme_override_font_sizes/font_size = 28
 placeholder_text = "Enter password..."
 context_menu_enabled = false
 secret = true
 
 [node name="LoginButton" type="Button" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer" unique_id=252534284]
-unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_p2j7e")
-theme_override_font_sizes/font_size = 28
+theme = ExtResource("6_ude2g")
 text = "> Log in"
 
 [node name="LoadingIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer" unique_id=1000922626]
@@ -208,7 +223,6 @@ mouse_filter = 2
 texture = SubResource("AnimatedTexture_47vyr")
 expand_mode = 2
 stretch_mode = 5
-script = ExtResource("13_g30j5")
 
 [node name="HintLabel" type="Label" parent="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer" unique_id=1647025987]
 unique_name_in_owner = true
@@ -222,12 +236,11 @@ autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="FadeTransition" parent="." unique_id=691797635 instance=ExtResource("3_0emk2")]
+[node name="FadeTransition" parent="." unique_id=691797635 instance=ExtResource("16_1w135")]
 visible = false
 layout_mode = 1
 fade_speed = 0.5
 
-[connection signal="start_load" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer" to="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer/LoadingIcon" method="_on_load"]
+[connection signal="to_desktop" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer" to="." method="go_to_desktop"]
 [connection signal="text_submitted" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer/PasswordEnter" to="." method="_on_password_submitted"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer/LoginButton" to="." method="_on_login_button_pressed"]
-[connection signal="to_desktop" from="MarginContainer/HBoxContainer/SelectedUserPanel/MarginContainer/SelectedUserContainer/PasswordContainer/LoadingIcon" to="." method="go_to_desktop"]

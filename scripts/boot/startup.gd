@@ -12,26 +12,21 @@ func _ready() -> void:
 	anim.play("startup")
 
 
-func load_os() -> int:
-	var err := System.load_system_info()
-	
-	# return the error code
-	return err
-
-
 func _on_anim_finished(anim_name: StringName) -> void:
 	if anim_name == "startup":
 		# attempt to load DoorOS
-		var res := load_os()
+		var res := System.load_system_info()
 		if res == 0:
 			# success, show complete animation
 			anim.play("load_complete")
 		else:
 			# failure, show error message
-			printerr("DoorOS failed to load with error code ", res)
+			var err := "DoorOS %s failed to load with error code %d" % [System.OS_VER, res]
+			%ErrorDisplay.text = err
+			push_error(err)
 	
 	elif anim_name == "load_complete":
-		get_tree().change_scene_to_file("res://scenes/login.tscn")
+		get_tree().change_scene_to_file("uid://b7t4t87nxscro")
 	
 	else:
 		printerr("Startup animation failure. Finished animation has no result.")

@@ -1,16 +1,24 @@
 extends HBoxContainer
 
-# sent to tell the loading spinner to appear and start loading the desktop
-signal start_load
+# sent to tell the system to go to the desktop
+signal to_desktop
 
 # the password field
 @onready var textbox := $PasswordEnter
 # the button that can be used to initiate a log-in
 @onready var login_btn := $LoginButton
+# the loading spinner upon successful login
+@onready var loading_icon := $LoadingIcon
 
 # TODO: find out if this is the best way to animate a Control node in a container
 var _initial_pos: Vector2
 var _textbox_pos: Vector2
+
+
+func _ready() -> void:
+	# set up loading spinner
+	loading_icon.hide()
+	loading_icon.modulate = Color(1.0, 1.0, 1.0, 0.0)
 
 
 # common set-up steps when animating
@@ -36,7 +44,19 @@ func animate_login_success() -> void:
 	text_anim.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	await text_anim.finished
 	
-	start_load.emit()
+	# reset container position to show loading spinner
+	textbox.hide()
+	login_btn.hide()
+	set_position(_initial_pos)
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	
+	# show the loading spinner
+	loading_icon.show()
+	var load_anim := create_tween()
+	load_anim.tween_property(loading_icon, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5).set_ease(Tween.EASE_IN_OUT)
+	await load_anim.finished
+	
+	to_desktop.emit()
 
 
 func animate_login_failure() -> void:
