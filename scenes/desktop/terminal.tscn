@@ -45,6 +45,7 @@ accessibility_name = "Terminal"
 accessibility_description = "Access to the command line"
 theme = ExtResource("1_o1728")
 script = ExtResource("2_vmfki")
+process_name = "dooros.terminal"
 
 [node name="TextSection" type="TextEdit" parent="." unique_id=1098689642]
 visible = false

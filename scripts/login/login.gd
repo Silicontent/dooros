@@ -48,6 +48,7 @@ func load_user_list() -> void:
 		b.button_group = btn_group
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS_FORCE
 		b.pressed.connect(load_user_information.bind(System.get_user_manager().get_users()[i]))
 		# if this is the first user, set this button as pressed
 		# TODO: update this so that the previously-logged-in user is pressed

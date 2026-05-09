@@ -1,5 +1,7 @@
 extends TextureRect
 
+@export var terminal: PackedScene
+
 @onready var clock := $BarContainer/BarContentsContainer/RightBar/BarClock
 
 
@@ -14,6 +16,11 @@ func _process(_delta: float) -> void:
 func _on_system_menu_pressed() -> void:
 	if not %SecretIDK.playing:
 		System.quit()
+
+
+func _on_terminal_pressed() -> void:
+	var t := terminal.instantiate()
+	owner.add_child(t)
 
 
 # ONGOING PROCESSES ===========================================================
