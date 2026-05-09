@@ -3,17 +3,12 @@ extends Control
 # the currently selected user to log in
 @export var selected_user: User
 
-# container for user buttons
-@onready var user_list_display := $MarginContainer/HBoxContainer/UserListPanel/MarginContainer/ScrollContainer/UserListContainer
-# list of User resources currently on disk
-var user_list: Array[User]
-
 
 func _ready() -> void:
 	load_user_list()
 	# load first user in the list
 	# TODO: replace this with previously-logged-in user
-	load_user_information(user_list[0])
+	load_user_information(System.get_user_manager().get_users()[0])
 
 
 # USER INFORMATION ============================================================
@@ -21,9 +16,14 @@ func load_user_information(u: User) -> void:
 	# set selected user
 	selected_user = u
 	
-	# load display name
+	# load display name and stored username
 	%DisplayName.text = u.display_name
+	%UsernameLabel.text = u.username
+	# indicate administrator permissions
+	if u.admin:
+		%UsernameLabel.text += " (admin)"
 	
+	%PasswordContainer.textbox.clear()
 	# disable the password textbox if there is no password
 	%PasswordContainer.textbox.visible = u.password != System.get_user_manager().NO_PASS
 	
@@ -35,23 +35,32 @@ func load_user_information(u: User) -> void:
 
 
 func load_user_list() -> void:
-	var btn_theme := load("uid://b5wj2dagftl17")
+	var btn_theme := load("uid://bsu7t6bn4kb2o")
+	var btn_group := load("uid://3xnadkvc5fvs")
 	
 	# create list of users in GUI
-	user_list = System.get_user_manager().get_users()
-	for i in range(len(user_list)):
+	for i in range(len(System.get_user_manager().get_users())):
 		# create new button for a user
 		var b := Button.new()
-		b.text = user_list[i].display_name
+		b.text = System.get_user_manager().get_users()[i].display_name
+		b.toggle_mode = true
 		b.theme = btn_theme
-		b.pressed.connect(load_user_information.bind(user_list[i]))
-		user_list_display.add_child(b)
+		b.button_group = btn_group
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.pressed.connect(load_user_information.bind(System.get_user_manager().get_users()[i]))
+		# if this is the first user, set this button as pressed
+		# TODO: update this so that the previously-logged-in user is pressed
+		if i == 0: b.button_pressed = true
+		
+		%UserListContainer.add_child(b)
 
 
 # PASSWORD CHECKING ===========================================================
 func go_to_desktop() -> void:
 	# TODO: properly set up desktop environment for the selected user
-	get_tree().change_scene_to_file("res://scenes/desktop/desktop.tscn")
+	System.get_user_manager().set_current_user(selected_user)
+	get_tree().change_scene_to_file("uid://cd3ra65ga6v0p")
 
 
 func check_password(given: String) -> void:
@@ -83,8 +92,9 @@ func _process(_delta: float) -> void:
 
 
 func reset_list() -> void:
+	System.get_user_manager().get_users(true)
 	# DEBUG: used by UserDebug menu
-	user_list.clear()
-	for u in user_list_display.get_children():
+	for u in %UserListContainer.get_children():
 		u.queue_free()
 	load_user_list()
+	load_user_information(System.get_user_manager().get_users()[0])

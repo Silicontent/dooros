@@ -16,11 +16,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="DoorOS"
 config/description="Open the door to the future of computing.
-
 Beta version, not for redistribution."
-config/version="0.0.1"
+config/version="0.3.1"
 config/tags=PackedStringArray("side_project")
-run/main_scene="uid://dv0l6luteumqi"
+run/main_scene="uid://d4ejnr4ncqqux"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

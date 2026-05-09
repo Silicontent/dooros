@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bstg1ublx6jct" path="res://assets/fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf" id="5_546by"]
 [ext_resource type="FontFile" uid="uid://cb541tdnjuatc" path="res://assets/fonts/Roboto_Mono/RobotoMono-Italic.ttf" id="6_ibpvd"]
 [ext_resource type="AudioStream" uid="uid://dukevyg3ilmsc" path="res://assets/audio/sfx_startup_temp.mp3" id="7_546by"]
+[ext_resource type="FontFile" uid="uid://cjvhljs3vcp3r" path="res://assets/fonts/IBM VGA 8x16/Px437_IBM_VGA_8x16.ttf" id="7_ibpvd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkuir"]
 bg_color = Color(1, 1, 1, 0)
@@ -31,6 +32,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_fj6x1"]
+font = ExtResource("7_ibpvd")
+font_size = 36
 
 [sub_resource type="Animation" id="Animation_tkuir"]
 length = 0.001
@@ -462,6 +467,18 @@ bbcode_enabled = true
 text = "Welcome to Door[color=blue]OS[/color][color=white].[/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ErrorDisplay" type="Label" parent="." unique_id=1722983676]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 756.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_fj6x1")
+vertical_alignment = 2
 
 [node name="Fader" type="ColorRect" parent="." unique_id=1083371175]
 layout_mode = 1

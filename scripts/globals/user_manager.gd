@@ -4,20 +4,29 @@ extends Node
 ## actions on a user is handled by this node. The user currently logged-in is
 ## also stored here.
 
-# location where user profiles are stored
+## Location where user profiles are stored on the disk.
 const USERS_DIR := "user://users"
-# various file names each user has
+## File that contains each user's information.
 const INFO_FILE := "info"
+## File that contains each user's hashed password and password hint.
 const PW_FILE := "pw"
 
-# what is stored as a password for users without one
+## Default value stored as the user's password if the user has no password.
 const NO_PASS := "null"
 
+## A stored array of all users as User resources.
+var _all_users: Array[User] = []
+
 ## The user currently logged into the system.
-var _user: User = null
+# DEBUG: load the default user resource
+var _user: User = load("uid://dxqihdhgltxag")
 
 
 # CURRENT USER ================================================================
+func set_current_user(u: User) -> void:
+	_user = u
+
+
 func get_current_user() -> User:
 	return _user
 
@@ -32,28 +41,33 @@ func get_current_password() -> String:
 
 # MANAGEMENT FUNCTIONS ========================================================
 ## Get an array of User resources. This function goes through every user file
-## in the users directory to fetch information for all users.
+## in the users directory to fetch information for all users. If the users
+## directory cannot be found or doesn't exist, it will be created with the
+## default administrator user. Then, users will be loaded as normal.
 ## [br] [br]
-## If the users directory cannot be found or doesn't exist, it will be created
-## with the default administrator user. Then, users will be loaded as normal.
-func get_users() -> Array[User]:
-	var users: Array[User]
+## If [param regen] is [code]false[/code], the function will simply
+## return a previously-generated list of users, creating the list if it does
+## not exist. If [code]true[/code], the function will regenerate the list of
+## users from the disk no matter what.
+func get_users(regen: bool = false) -> Array[User]:
+	# if a list does not already exist, create it
+	if len(_all_users) == 0 or regen:
+		# check for a user directory
+		if not DirAccess.dir_exists_absolute(USERS_DIR):
+			# create the users directory
+			DirAccess.make_dir_absolute(USERS_DIR)
+		
+		if len(DirAccess.get_directories_at(USERS_DIR)) == 0:
+			# create the default user
+			create_user("default", "Default User", false)
+		
+		# load all users
+		_all_users = []
+		for path in DirAccess.get_directories_at(USERS_DIR):
+			var u := load_user(path)
+			_all_users.append(u)
 	
-	# check for a user directory
-	if not DirAccess.dir_exists_absolute(USERS_DIR):
-		# create the users directory
-		DirAccess.make_dir_absolute(USERS_DIR)
-	
-	if len(DirAccess.get_directories_at(USERS_DIR)) == 0:
-		# create the default user
-		create_user("default", "Default User", false)
-	
-	# load all users
-	for path in DirAccess.get_directories_at(USERS_DIR):
-		var u := load_user(path)
-		users.append(u)
-	
-	return users
+	return _all_users
 
 
 ## Creates a new user and adds it to the system.

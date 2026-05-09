@@ -16,11 +16,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# allow the BIOS animation to be skipped
 	if Input.is_action_just_pressed("debug_start"):
-		get_tree().change_scene_to_file("res://scenes/boot/startup.tscn")
+		anim.animation_finished.emit("")
 
 
 func _on_anim_finished(_anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://scenes/boot/startup.tscn")
+	get_tree().change_scene_to_file("uid://ss4cy256e5ko")
 
 
 # HELPERS =====================================================================
