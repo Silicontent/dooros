@@ -20,7 +20,7 @@ Beta version, not for redistribution."
 config/version="0.3.1"
 config/tags=PackedStringArray("side_project")
 run/main_scene="uid://d4ejnr4ncqqux"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://bjjlqoctm0jlj"
