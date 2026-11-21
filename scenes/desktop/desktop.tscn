@@ -110,8 +110,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SystemMenu" type="TextureButton" parent="QuickBar/BarContainer/BarContentsContainer/LeftBar" unique_id=1574795527]
-clip_contents = true
 custom_minimum_size = Vector2(32, 32)
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "Shut down PC"
@@ -127,8 +127,8 @@ theme_override_constants/separation = 52
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ldono")
 
 [node name="Terminal" type="TextureButton" parent="QuickBar/BarContainer/BarContentsContainer/LeftBar" unique_id=42261226]
-clip_contents = true
 custom_minimum_size = Vector2(50, 50)
+clip_contents = true
 layout_mode = 2
 tooltip_text = "Terminal"
 texture_normal = ExtResource("6_g4poc")

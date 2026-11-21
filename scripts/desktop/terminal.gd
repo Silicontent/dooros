@@ -1,19 +1,10 @@
 extends Process
 
-## 
-@onready var text: TextEdit = $TextSection
-
 @onready var result := $VBoxContainer/CommandResult
 
 ## The current working directory. All commands run will execute
 ## relative to this directory.
 var working_dir := "~"
-
-
-func _ready() -> void:
-	super()
-	working_dir = pwd()
-	text.text = create_prefix()
 
 
 func _process(_delta: float) -> void:
@@ -29,14 +20,10 @@ func pwd() -> String:
 	return "~"
 
 
-func _on_text_caret_changed() -> void:
-	pass #print(text.get_caret_column())
-
-
 # PARSING =====================================================================
 func _on_command_submitted(raw: String) -> void:
 	var cmd_list := raw.split(" ")
-	var res := "error"
+	var res := ""
 	
 	if len(cmd_list) > 0:
 		match cmd_list[0]:
@@ -51,5 +38,11 @@ func _on_command_submitted(raw: String) -> void:
 				result.text = ""
 			"pwd":
 				res = pwd()
+			"user":
+				res = create_prefix()
+			_:
+				res = "%s: Command not found" % cmd_list[0]
 		
-		result.text += res + "\n"
+		result.text += res + "\n" if res != "" else res
+	
+	%CommandPrompt.clear()

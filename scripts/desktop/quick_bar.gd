@@ -7,7 +7,7 @@ extends TextureRect
 
 func _process(_delta: float) -> void:
 	if %SecretIDK.playing:
-		clock.text = "2:41 AM\n9/17/2006"
+		clock.text = "2:41 AM\n4/26/2005"
 	else:
 		update_clock()
 
@@ -35,4 +35,4 @@ func update_clock() -> void:
 	minute = minute if len(minute) > 1 else "0" + minute
 	
 	# display information
-	clock.text = "%s:%s %s\n%s/%s/%s" % [(t.hour % 12), minute, period, t.month, t.day, t.year]
+	clock.text = "%s:%s %s\n%s/%s/%s" % [("12" if (t.hour == 0 or t.hour == 12) else t.hour % 12), minute, period, t.month, t.day, t.year]

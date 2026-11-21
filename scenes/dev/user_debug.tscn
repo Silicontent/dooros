@@ -135,6 +135,7 @@ Admin?  {}
 Hint: {}
 Password?  {}"
 label_settings = SubResource("LabelSettings_xh65f")
+text_overrun_behavior = 5
 
 [node name="Password2" type="LineEdit" parent="Window/MarginContainer/ContainerAll/VBoxContainer" unique_id=322351782]
 unique_name_in_owner = true

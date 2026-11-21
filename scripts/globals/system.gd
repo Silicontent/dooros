@@ -5,10 +5,10 @@ extends Node
 
 ## The current internal version of DoorOS. This value is updated whenever
 ## a new DoorOS patch is pushed.
-const OS_VER: String = "0.3.1"
+const OS_VER: String = "0.3.2"
 
 ## Path to the boot file used to hold global system information.
-## See [member load_boot_file].
+## See [member boot].
 const BOOT_PATH := "user://boot"
 
 ## Controls all logic related to creating, loading, and managing user
